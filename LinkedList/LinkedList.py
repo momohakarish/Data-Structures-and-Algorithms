@@ -3,13 +3,13 @@ class Node:
         self.value = value
         self.next_node = next_node
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.value)
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.value == other.value
 
-    def has_next(self):
+    def has_next(self) -> bool:
         return self.next_node is not None
 
 
@@ -20,10 +20,10 @@ class LinkedList:
         if self.head is not None:
             self.size = 1
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.size
 
-    def __str__(self):
+    def __str__(self) -> str:
         representation = '['
         iterator = self.head
         while iterator is not None:
@@ -32,7 +32,7 @@ class LinkedList:
         return representation[:-1] + ']'
 
     # Adding a node to the list
-    def add(self, other):
+    def add(self, other: Node):
         other.next_node, self.head = self.head, other
         self.size += 1
 
@@ -56,19 +56,16 @@ class LinkedList:
         self.size -= 1
 
     # Returning if the list is empty or not
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.size == 0
 
-    # Returns the first node in the list
-    def pop(self):
-        # In case the list is empty
-        if self.is_empty():
-            return
-
-        self.size -= 1
-        return_node = self.head
-        self.head = self.head.next_node
-        return return_node
 
 
-    
+a = LinkedList()
+a.add(Node(5))
+a.add(Node(23))
+a.add(Node(45))
+a.remove(Node(5))
+print(a)
+print(a.pop())
+print(a)
