@@ -70,3 +70,5 @@ class LinkedList:
         self.head = self.head.next_node
         return return_node
 
+
+    
