@@ -70,12 +70,3 @@ class LinkedList:
         self.head = self.head.next_node
         return return_node
 
-
-a = LinkedList()
-a.add(Node(5))
-a.add(Node(23))
-a.add(Node(45))
-a.remove(Node(5))
-print(a)
-print(a.pop())
-print(a)
