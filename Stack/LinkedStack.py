@@ -2,6 +2,7 @@
 A class representing a node in a linked list
 All operations are done in O(1) Space and Time complexity
 """
+from typing import Any
 
 
 class Node:
@@ -23,51 +24,59 @@ class Node:
 
 
 """
-A class representing a linked list of nodes
+A class representing a stack implemented with a linked list
 All operations excluding __str__ are implemented in O(1) Space and Time complexity
 __str__ is implemented in O(n) Time and space complexity with n being the length of the list
 """
 
 
-class LinkedList:
-    def __init__(self, head: Node):
-        self.head = head
+class LinkedStack:
+    def __init__(self):
+        self.head = None
         self.size = 0
 
     def __len__(self) -> int:
         return self.size
 
+    """
+    The top of the stack is the first element to be printed
+    We represent the top of the stack with the head node
+    """
     def __str__(self) -> str:
-        representation = '['
         iterator = self.head
+        output = '['
         while iterator is not None:
-            representation += str(iterator) + ','
+            output += str(iterator.value) + ','
             iterator = iterator.next_node
-        return representation[:-1] + ']'
+        return output[:-1] + ']'
 
-    def add(self, other: Node):
+    def push(self, value):
+        # Creating a node from the value so we can add it to our list
+        other = Node(value)
+        # Adding the node to our list
         other.next_node, self.head = self.head, other
         self.size += 1
 
-    def remove(self, other: Node):
-        # In case the node to remove is the first one AKA the head
-        if other == self.head:
-            self.head = self.head.next_node
-            return
-
-        # Iterating over the list searching for the value to remove
-        slow_iterator = self.head
-        fast_iterator = self.head.next_node
-        while fast_iterator is not None:
-            # Removing the node
-            if fast_iterator == other:
-                value = fast_iterator.value
-                slow_iterator.next_node = fast_iterator.next_node
-            slow_iterator = slow_iterator.next_node
-            fast_iterator = fast_iterator.next_node
-
+    def pop(self) -> Any:
+        if self.is_empty():
+            raise IndexError('Attempted pop from an empty stack')
+        return_value = self.head.value
+        self.head = self.head.next_node
         self.size -= 1
+        return return_value
+
+    def peek(self) -> Any:
+        return self.head.value
 
     def is_empty(self) -> bool:
         return self.size == 0
+
+a = LinkedStack()
+a.push(25)
+a.push(42)
+print(a)
+print(len(a))
+print(a.pop())
+print(a.pop())
+print(a.is_empty())
 
