@@ -15,6 +15,9 @@ class Node:
     def __eq__(self, other) -> bool:
         return self.value == other.value
 
+    """
+    Returns weather the node is pointing to another node
+    """
     def has_next(self) -> bool:
         return self.next_node is not None
 
@@ -31,14 +34,18 @@ class LinkedList:
         if self.head is not None:
             self.size = 1
 
-    # O(1) Time complexity
-    # O(1) Space complexity
+    """
+    O(1) Time complexity
+    O(1) Space complexity
+    """
     def __len__(self) -> int:
         return self.size
 
-    # O(n) Time complexity
-    # O(n) Space complexity
-    # n = length of the list
+    """
+    O(n) Time complexity
+    O(n) Space complexity
+    n = length of the list
+    """
     def __str__(self) -> str:
         representation = '['
         iterator = self.head
@@ -47,16 +54,20 @@ class LinkedList:
             iterator = iterator.next_node
         return representation[:-1] + ']'
 
-    # O(1) Time complexity
-    # O(1) Space complexity
-    # Adding a node to the list
+    """
+    Adding a node to the list
+    O(1) Time complexity
+    O(1) Space complexity
+    """
     def add(self, other: Node):
         other.next_node, self.head = self.head, other
         self.size += 1
 
-    # O(n) Time complexity
-    # O(1) Space complexity
-    # Removing a node from the list
+    """
+    O(n) Time complexity
+    O(1) Space complexity
+    Removing a node from the list
+    """
     def remove(self, other: Node):
         # In case the node to remove is the first one AKA the head
         if other == self.head:
@@ -76,9 +87,11 @@ class LinkedList:
 
         self.size -= 1
 
-    # O(1) Time complexity
-    # O(1) Space complexity
-    # Returning if the list is empty or not
+    """
+    O(1) Time complexity
+    O(1) Space complexity
+    Returning if the list is empty or not
+    """
     def is_empty(self) -> bool:
         return self.size == 0
 
