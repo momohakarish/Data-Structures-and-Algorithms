@@ -82,12 +82,3 @@ class LinkedList:
     def is_empty(self) -> bool:
         return self.size == 0
 
-
-
-a = LinkedList()
-a.add(Node(5))
-a.add(Node(23))
-a.add(Node(45))
-print(a)
-a.remove(Node(5))
-print(a)
