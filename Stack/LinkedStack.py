@@ -71,12 +71,3 @@ class LinkedStack:
     def is_empty(self) -> bool:
         return self.size == 0
 
-a = LinkedStack()
-a.push(25)
-a.push(42)
-print(a)
-print(len(a))
-print(a.pop())
-print(a.pop())
-print(a.is_empty())
-
